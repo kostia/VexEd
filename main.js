@@ -29,10 +29,6 @@ app.on('ready', function() {
     });
   }
 
-  mainWindow.on('resize', function() {
-    mainWindow.webContents.send('window-resize', mainWindow.getSize()[0]);
-  });
-
   mainWindow.on('close', function(e) {
     if (warnBeforeClose) {
       e.preventDefault();

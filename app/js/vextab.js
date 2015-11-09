@@ -1,14 +1,10 @@
 module.exports = function(input, output, error) {
   var renderer = new Vex.Flow.Renderer(output, Vex.Flow.Renderer.Backends.CANVAS);
-  var artist = new Artist(10, 10, 600, {scale: 0.8});
-  var vextab = new VexTab(artist);
 
   return {
-    render: function(width) {
-      if (width) {
-        artist = new Artist(10, 10, width, {scale: 0.8});
-        vextab = new VexTab(artist);
-      }
+    render: function() {
+      var artist = new Artist(10, 10, $(input).width());
+      var vextab = new VexTab(artist);
 
       try {
         vextab.reset();

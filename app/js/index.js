@@ -70,10 +70,6 @@ ipc.on('file-save', function() {
   saveFile();
 });
 
-ipc.on('window-resize', function(width) {
-  vextab.render(width);
-});
-
 ipc.on('window-close', function() {
   trySaveNotPersisted(function() {
     ipc.send('app-quit');
@@ -124,4 +120,8 @@ var trySaveNotPersisted = function(next) {
   }
 };
 
-vextab.render(remote.getCurrentWindow().getSize()[0]);
+$(window).on('resize', function() {
+  vextab.render();
+});
+
+vextab.render();
