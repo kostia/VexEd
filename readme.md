@@ -1,24 +1,25 @@
-# vexed
+# VexEd - The VexTab Editor (Alpha)
 
-> My superior app
+<img src="https://raw.github.com/kostia/VexEd/master/screenshot.png" width="500px">
 
+Editor for the [VexTab](http://www.vexflow.com/vextab) notation.
 
-## Dev
+## Develop
 
 ```
-$ npm install
+npm install
 ```
 
 ### Run
 
 ```
-$ npm start
+npm start
 ```
 
 ### Build
 
 ```
-$ npm run build
+npm run build
 ```
 
 Builds the app for OS X, Linux, and Windows, using [electron-packager](https://github.com/maxogden/electron-packager).
