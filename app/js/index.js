@@ -71,6 +71,10 @@ ipc.on('file-save', function() {
   saveFile();
 });
 
+ipc.on('file-save-as', function() {
+  saveUnknownFile();
+});
+
 ipc.on('window-close', function() {
   trySaveNotPersisted(function() {
     ipc.send('app-quit');

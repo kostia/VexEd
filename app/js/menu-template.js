@@ -47,6 +47,11 @@ module.exports = function(mainWindow) {
       click: function() { mainWindow.webContents.send('file-save'); }
     },
     {
+      label: 'Save As...',
+      accelerator: 'CmdOrCtrl+Shift+S',
+      click: function() { mainWindow.webContents.send('file-save-as'); }
+    },
+    {
       label: 'Export PDF',
       accelerator: 'CmdOrCtrl+E',
       click: function() {
