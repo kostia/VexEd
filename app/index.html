@@ -3,25 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>VexEd - The VexTab Editor</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/index.css">
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-6 editor-left">
-          <div id="input" contenteditable="true">
-            tabstave notation=true tablature=false
-          </div>
-        </div>
-
-        <div class="col-xs-6">
-          <canvas id="output"></canvas>
+    <div id="container">
+      <div id="col-left">
+        <div id="input" contenteditable="true">
+          tabstave notation=true tablature=true<br />
+          tabstave notation=true tablature=true
         </div>
       </div>
 
-      <div id="error" class="row text-danger"></div>
+      <div id="col-right">
+        <canvas id="output"></canvas>
+      </div>
     </div>
+
+    <div id="error" class="text-danger"></div>
   </body>
 
   <script type="text/javascript" src="../node_modules/vextab/releases/vextab-div.js"></script>

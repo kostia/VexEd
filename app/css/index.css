@@ -1,25 +1,51 @@
-#input {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  margin-top: 30px;
+}
+
+#col-left {
+  border-right: 1px solid #ddd;
+  float: left;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  width: 50%;
+}
+
+#col-right {
+  float: right;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  width: 49%;
+}
+
+#input {
   font-size: 14px;
+  margin-top: 30px;
+  width: 100%;
 }
 
 #input:focus {
   outline: none;
 }
 
-.editor-left {
-  border-right: 1px solid #ddd;
-}
-
 #error {
-  display: none;
-  height: 30px;
-  font-size: 12px;
-  border-top: 1px solid #ddd;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   background: #fff;
+  border-top: 1px solid #ddd;
+  bottom: 0;
+  display: none;
+  font-size: 12px;
+  height: 30px;
+  left: 0;
+  margin: 0;
   padding: 5px;
+  position: fixed;
+  width: 100%;
 }

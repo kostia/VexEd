@@ -1,3 +1,4 @@
+var _      = require('lodash');
 var fs     = require('fs');
 var ipc    = require('ipc');
 var remote = require('remote');
@@ -122,14 +123,20 @@ var trySaveNotPersisted = function(next) {
   }
 };
 
-var updateLeftColSize = function() {
-  $('.editor-left').css('height', $(window).height());
+var autoHeight = function() {
+  var colLeft = $('#col-left');
+  var colRight = $('#col-right');
+
+  var height = _.max([$(window).height(), colLeft.height(), colRight.height(), 700]);
+
+  colLeft.height(height);
+  colRight.height(height);
 };
 
 $(window).on('resize', function() {
+  autoHeight();
   vextab.render();
-  updateLeftColSize();
 });
-updateLeftColSize();
 
+autoHeight();
 vextab.render();

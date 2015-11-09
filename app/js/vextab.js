@@ -3,7 +3,7 @@ module.exports = function(input, output, error) {
 
   return {
     render: function() {
-      var artist = new Artist(10, 10, $(input).width());
+      var artist = new Artist(10, 10, $(input).width() - 30);
       var vextab = new VexTab(artist);
 
       try {

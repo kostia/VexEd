@@ -12,7 +12,7 @@ var mainWindow = null;
 var warnBeforeClose = true;
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 800, height: 700});
+  mainWindow = new BrowserWindow({width: 900, height: 700});
   mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
 
   var applicationMenu = Menu.buildFromTemplate(menuTemplate(mainWindow));
