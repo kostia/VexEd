@@ -12,9 +12,11 @@ module.exports = function(input, output, error) {
         vextab.parse(input.innerText);
         artist.render(renderer);
         error.innerText = '';
+        $(error).hide();
       } catch (e) {
         console.log(e);
         error.innerText = e.message.replace(/[\n]/g, '<br/>');
+        $(error).show();
       }
     }
   };

@@ -121,7 +121,7 @@ var trySaveNotPersisted = function(next) {
 };
 
 var updateLeftColSize = function() {
-  $('.editor-left').css('height', $(window).height() - $('#error').outerHeight());
+  $('.editor-left').css('height', $(window).height());
 };
 
 $(window).on('resize', function() {
