@@ -1,3 +1,7 @@
+var fs = require('fs');
+
+var Dialog = require('dialog');
+
 module.exports = function(mainWindow) {
   var vexEdMenu = {label: 'VexEd', submenu: [
     {
@@ -43,9 +47,25 @@ module.exports = function(mainWindow) {
       click: function() { mainWindow.webContents.send('file-save'); }
     },
     {
-      label: 'Save as...',
-      accelerator: 'CmdOrCtrl+Shift+S',
-      click: function() { mainWindow.webContents.send('file-save-as'); }
+      label: 'Export PDF',
+      accelerator: 'CmdOrCtrl+E',
+      click: function() {
+        mainWindow.webContents.printToPDF({}, function(err, data) {
+          if (err) {
+            Dialog.showErrorBox('Error exporting PDF', err);
+          }
+
+          Dialog.showSaveDialog(null, {}, function(filename) {
+            if (filename) {
+              fs.writeFile(filename, data, function(err) {
+                if (err) {
+                  Dialog.showErrorBox('Error saving PDF', err);
+                }
+              });
+            }
+          });
+        });
+      }
     }
   ]};
 
