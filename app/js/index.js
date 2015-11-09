@@ -32,6 +32,8 @@ var state = (function() {
     }
   };
 
+  that.persisted = true;
+
   return that;
 }());
 
@@ -59,6 +61,10 @@ ipc.on('file-open', function() {
 });
 
 ipc.on('file-save', function() { saveFile(); });
+
+ipc.on('will-close', function() {
+  trySaveNotPersisted(function() { ipc.send('close'); });
+});
 
 var saveFile = function(next) {
   state.filename ? saveKnownFile(state.filename, next) : saveUnknownFile(next);
