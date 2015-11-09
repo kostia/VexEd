@@ -43,35 +43,56 @@ ui.input.addEventListener('input', function() {
 });
 
 ipc.on('file-open', function() {
-  Dialog.showOpenDialog(null, {}, function(filenames) {
-    if (filenames) {
-      var filename = filenames[0];
-      fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) { return Dialog.showErrorBox(`Error opening ${filename}`, err); }
-        state.setPersisted(filename, data);
-        ui.input.innerText = data;
-        vextab.render();
-      });
-    }
+  trySaveNotPersisted(function() {
+    Dialog.showOpenDialog(null, {}, function(filenames) {
+      if (filenames) {
+        var filename = filenames[0];
+        fs.readFile(filename, 'utf8', function(err, data) {
+          if (err) { return Dialog.showErrorBox(`Error opening ${filename}`, err); }
+          state.setPersisted(filename, data);
+          ui.input.innerText = data;
+          vextab.render();
+        });
+      }
+    });
   });
 });
 
-ipc.on('file-save', function() {
-  var data = ui.input.innerText;
-  if (state.filename) {
-    saveFile(state.filename, data);
-  } else {
-    Dialog.showSaveDialog(null, {}, function(filename) {
-      saveFile(filename, data);
-    });
-  }
-});
+ipc.on('file-save', function() { saveFile(); });
 
-var saveFile = function(filename, data) {
+var saveFile = function(next) {
+  state.filename ? saveKnownFile(state.filename, next) : saveUnknownFile(next);
+};
+
+var saveUnknownFile = function(next) {
+  Dialog.showSaveDialog(null, {}, function(filename) { saveKnownFile(filename, next); });
+};
+
+var saveKnownFile = function(filename, next) {
+  var data = ui.input.innerText;
   fs.writeFile(filename, data, function(err) {
     if (err) { return Dialog.showErrorBox(`Error saving ${filename}`, err); }
     state.setPersisted(filename, data);
+    if (next) { next(); }
   });
+};
+
+var trySaveNotPersisted = function(next) {
+  if (state.persisted) {
+    next();
+  } else {
+    Dialog.showMessageBox(null, {
+      type: 'question',
+      message: 'Save the changes?',
+      buttons: ['Save', "Don't save"]
+    }, function(response) {
+      if (response === 0) {
+        saveFile(next);
+      } else {
+        next();
+      }
+    });
+  }
 };
 
 vextab.render();
