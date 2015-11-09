@@ -120,8 +120,14 @@ var trySaveNotPersisted = function(next) {
   }
 };
 
+var updateLeftColSize = function() {
+  $('.editor-left').css('height', $(window).height() - $('#error').outerHeight());
+};
+
 $(window).on('resize', function() {
   vextab.render();
+  updateLeftColSize();
 });
+updateLeftColSize();
 
 vextab.render();
