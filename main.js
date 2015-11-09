@@ -9,10 +9,9 @@ var Menu          = require('menu');
 var menuTemplate = require('./app/js/menu-template');
 
 var mainWindow = null;
-var persistBeforeClose = true;
+var warnBeforeClose = true;
 
 app.on('ready', function() {
-
   mainWindow = new BrowserWindow({});
   mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
 
@@ -20,14 +19,14 @@ app.on('ready', function() {
   Menu.setApplicationMenu(applicationMenu);
 
   mainWindow.on('close', function(e) {
-    if (persistBeforeClose) {
+    if (warnBeforeClose) {
       e.preventDefault();
       mainWindow.webContents.send('will-close');
     }
   });
 });
 
-ipc.on('close', function() {
-  persistBeforeClose = false;
+ipc.on('quit', function() {
+  warnBeforeClose = false;
   app.quit();
 });
