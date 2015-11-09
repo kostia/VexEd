@@ -11,18 +11,24 @@ var ui = {
 };
 
 var state = (function() {
-  var that = {
-    setFilename: function(filename) {
-      that.filename = filename;
-      remote.getCurrentWindow().setTitle(`VexEd - ${filename}`);
-    },
+  var currentWindow = remote.getCurrentWindow();
 
-    setPersisted: function() {
+  var that = {
+    setPersisted: function(filename, data) {
       that.persisted = true;
+      that.filename = filename;
+      that.data = data;
+      currentWindow.setTitle(`VexEd - ${filename}`);
     },
 
     setNotPersisted: function() {
       that.persisted = false;
+
+      if (that.filename) {
+        currentWindow.setTitle(`VexEd - ${that.filename}*`);
+      } else {
+        currentWindow.setTitle(`VexEd - *`);
+      }
     }
   };
 
@@ -31,7 +37,10 @@ var state = (function() {
 
 var vextab = require('./js/vextab')(ui.input, ui.output, ui.error);
 
-ui.input.addEventListener('input', function() { vextab.render(); });
+ui.input.addEventListener('input', function() {
+  if (input.innerText !== state.data) { state.setNotPersisted(); }
+  vextab.render();
+});
 
 ipc.on('file-open', function() {
   Dialog.showOpenDialog(null, {}, function(filenames) {
@@ -39,7 +48,7 @@ ipc.on('file-open', function() {
       var filename = filenames[0];
       fs.readFile(filename, 'utf8', function(err, data) {
         if (err) { return Dialog.showErrorBox(`Error opening ${filename}`, err); }
-        state.setFilename(filename);
+        state.setPersisted(filename, data);
         ui.input.innerText = data;
         vextab.render();
       });
@@ -54,14 +63,14 @@ ipc.on('file-save', function() {
   } else {
     Dialog.showSaveDialog(null, {}, function(filename) {
       saveFile(filename, data);
-      state.setFilename(filename);
     });
   }
 });
 
 var saveFile = function(filename, data) {
   fs.writeFile(filename, data, function(err) {
-    if (err) { Dialog.showErrorBox(`Error saving ${filename}`, err); }
+    if (err) { return Dialog.showErrorBox(`Error saving ${filename}`, err); }
+    state.setPersisted(filename, data);
   });
 };
 
