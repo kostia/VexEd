@@ -86,7 +86,9 @@ var saveFile = function(next) {
 
 var saveUnknownFile = function(next) {
   Dialog.showSaveDialog(null, {}, function(filename) {
-    saveKnownFile(filename, next);
+    if (filename) {
+      saveKnownFile(filename, next);
+    }
   });
 };
 
