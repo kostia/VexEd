@@ -1,7 +1,8 @@
 var _ = require('lodash');
 var ipc = require('ipc');
 
-var renderer = new Vex.Flow.Renderer(document.getElementById('output'), Vex.Flow.Renderer.Backends.CANVAS);
+var renderer = new Vex.Flow.Renderer(document.getElementById('output'),
+  Vex.Flow.Renderer.Backends.CANVAS);
 var artist = new Artist(10, 10, 600, {scale: 0.8});
 var vextab = new VexTab(artist);
 
@@ -24,6 +25,7 @@ document.getElementById('input').addEventListener('input', function() {
 
 ipc.on('load-data', function(data) {
   document.getElementById('input').innerText = data;
+  render();
 });
 
 render();
