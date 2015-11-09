@@ -1,6 +1,3 @@
-* Fix design issues:
-  * Separately scrollable cols.
-  * Separation line always 100%.
 * PDF export for canvas only.
 * "Save as...".
 * Decent "About VexEd".
