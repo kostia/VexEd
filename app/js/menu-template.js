@@ -119,7 +119,7 @@ module.exports = function(mainWindow) {
     windowMenu
   ];
 
-  if (process.env.DEBUG) { menuTemplate.push(developMenu); }
+  if (process.env.DEVELOP) { menuTemplate.push(developMenu); }
 
   return menuTemplate;
 };

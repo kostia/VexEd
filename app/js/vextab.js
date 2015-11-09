@@ -4,7 +4,12 @@ module.exports = function(input, output, error) {
   var vextab = new VexTab(artist);
 
   return {
-    render: function() {
+    render: function(width) {
+      if (width) {
+        artist = new Artist(10, 10, width, {scale: 0.8});
+        vextab = new VexTab(artist);
+      }
+
       try {
         vextab.reset();
         artist.reset();
