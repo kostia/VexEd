@@ -1,31 +1,68 @@
-var _ = require('lodash');
-var ipc = require('ipc');
+var fs     = require('fs');
+var ipc    = require('ipc');
+var remote = require('remote');
 
-var renderer = new Vex.Flow.Renderer(document.getElementById('output'),
-  Vex.Flow.Renderer.Backends.CANVAS);
-var artist = new Artist(10, 10, 600, {scale: 0.8});
-var vextab = new VexTab(artist);
+var Dialog = remote.require('dialog');
 
-var render = function() {
-  try {
-    vextab.reset();
-    artist.reset();
-    vextab.parse(document.getElementById('input').innerText);
-    artist.render(renderer);
-    document.getElementById('error').innerText = '';
-  } catch (e) {
-    console.log(e);
-    document.getElementById('error').innerText = e.message.replace(/[\n]/g, '<br/>');
-  }
+var ui = {
+  input: document.getElementById('input'),
+  output: document.getElementById('output'),
+  error: document.getElementById('error')
 };
 
-document.getElementById('input').addEventListener('input', function() {
-  render();
+var state = (function() {
+  var that = {
+    setFilename: function(filename) {
+      that.filename = filename;
+      remote.getCurrentWindow().setTitle(`VexEd - ${filename}`);
+    },
+
+    setPersisted: function() {
+      that.persisted = true;
+    },
+
+    setNotPersisted: function() {
+      that.persisted = false;
+    }
+  };
+
+  return that;
+}());
+
+var vextab = require('./js/vextab')(ui.input, ui.output, ui.error);
+
+ui.input.addEventListener('input', function() { vextab.render(); });
+
+ipc.on('file-open', function() {
+  Dialog.showOpenDialog(null, {}, function(filenames) {
+    if (filenames) {
+      var filename = filenames[0];
+      fs.readFile(filename, 'utf8', function(err, data) {
+        if (err) { return Dialog.showErrorBox(`Error opening ${filename}`, err); }
+        state.setFilename(filename);
+        ui.input.innerText = data;
+        vextab.render();
+      });
+    }
+  });
 });
 
-ipc.on('load-data', function(data) {
-  document.getElementById('input').innerText = data;
-  render();
+ipc.on('file-save', function() {
+  var data = ui.input.innerText;
+  if (state.filename) {
+    saveFile(state.filename, data);
+  } else {
+    Dialog.showSaveDialog(null, {}, function(filename) {
+      saveFile(filename, data);
+      state.setFilename(filename);
+    });
+  }
 });
 
-render();
+var saveFile = function(filename, data) {
+  fs.writeFile(filename, data, function(err) {
+    if (err) { Dialog.showErrorBox(`Error saving ${filename}`, err); }
+  });
+};
+
+vextab.render();

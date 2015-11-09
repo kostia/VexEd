@@ -1,5 +1,3 @@
-var menuCommands = require('./menu-commands');
-
 module.exports = function(mainWindow) {
   var vexEdMenu = {label: 'VexEd', submenu: [
     {
@@ -37,17 +35,17 @@ module.exports = function(mainWindow) {
     {
       label: 'Open...',
       accelerator: 'CmdOrCtrl+O',
-      click: function() { menuCommands.openFile(mainWindow); }
+      click: function() { mainWindow.webContents.send('file-open'); }
     },
     {
       label: 'Save',
       accelerator: 'CmdOrCtrl+S',
-      click: function() { }
+      click: function() { mainWindow.webContents.send('file-save'); }
     },
     {
       label: 'Save as...',
       accelerator: 'CmdOrCtrl+Shift+S',
-      click: function() { }
+      click: function() { mainWindow.webContents.send('file-save-as'); }
     }
   ]};
 
