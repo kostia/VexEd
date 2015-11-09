@@ -15,7 +15,7 @@ module.exports = function(input, output, error) {
         $(error).hide();
       } catch (e) {
         console.log(e);
-        error.innerText = e.message.replace(/[\n]/g, '<br/>');
+        error.innerText = 'Error: ' + e.message.replace(/[\n]/g, '<br/>');
         $(error).show();
       }
     }

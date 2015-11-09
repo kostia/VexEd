@@ -127,7 +127,7 @@ var autoHeight = function() {
   var colLeft = $('#col-left');
   var colRight = $('#col-right');
 
-  var height = _.max([$(window).height(), colLeft.height(), colRight.height(), 700]);
+  var height = _.max([$(window).height(), colLeft.height(), colRight.height(), 650]);
 
   colLeft.height(height);
   colRight.height(height);

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: SourceSansPro;
+  src: url(../fonts/SourceSansPro-Regular.ttf);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,12 +15,16 @@ body {
 }
 
 #col-left {
-  border-right: 1px solid #ddd;
+  background: #F5F5F5;
+  border-right: 1px solid #DDD;
+  color: #626262;
   float: left;
+  font-family: SourceSansPro;
+  font-size: 14px;
   margin: 0;
   overflow: auto;
-  padding: 0;
-  width: 50%;
+  padding: 10px 0 0 15px;
+  width: 48%;
 }
 
 #col-right {
@@ -23,7 +32,7 @@ body {
   margin: 0;
   overflow: auto;
   padding: 0;
-  width: 49%;
+  width: 48%;
 }
 
 #input {
@@ -37,15 +46,17 @@ body {
 }
 
 #error {
-  background: #fff;
-  border-top: 1px solid #ddd;
+  background: #FFF;
+  border-top: 1px solid #DDD;
   bottom: 0;
+  color: #DA7070;
   display: none;
+  font-family: SourceSansPro;
   font-size: 12px;
-  height: 30px;
+  height: 15px;
   left: 0;
   margin: 0;
-  padding: 5px;
+  padding: 5px 10px;
   position: fixed;
   width: 100%;
 }
