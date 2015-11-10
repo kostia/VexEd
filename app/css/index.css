@@ -14,6 +14,7 @@ body {
 }
 
 #header {
+  z-index: 333333;
   background: #FFF;
   border-bottom: 1px solid #CCC;
   color: #626262;
@@ -94,7 +95,7 @@ body {
   font-family: SourceSansPro;
   font-size: 14px;
   margin: 0;
-  padding: 0 0 0 15px;
+  padding: 0;
   overflow: auto;
   border-bottom: 1px solid #DDD;
 }
@@ -108,7 +109,7 @@ body {
 
 #col-right {
   margin: 0;
-  padding: 0;
+  padding: 10px 0 0 0;
   overflow: auto;
 }
 
@@ -118,13 +119,13 @@ body {
 }
 
 #input {
-  font-size: 14px;
+  font-size: 12px;
   width: 100%;
-  margin-top: 44px;
+  margin-top: 30px;
 }
 
 .view-vert #input {
-  margin-top: 30px;
+  margin-top: 16px;
 }
 
 #input:focus {
@@ -145,4 +146,5 @@ body {
   padding: 5px 10px;
   position: fixed;
   width: 100%;
+  z-index: 333333;
 }

@@ -13,14 +13,12 @@
     </div>
 
     <div id="container">
-      <div id="col-left">
-        <div id="input" contenteditable="true">
-          tabstave notation=true tablature=true<br />
-          tabstave notation=true tablature=true
-        </div>
+      <div id="col-left" class="auto-height">
+        <div id="input" class="auto-height" contenteditable="true">tabstave notation=true tablature=true<br />
+tabstave notation=true tablature=true</div>
       </div>
 
-      <div id="col-right">
+      <div id="col-right" class="auto-height">
         <canvas id="output"></canvas>
       </div>
     </div>
@@ -29,5 +27,6 @@
   </body>
 
   <script type="text/javascript" src="../node_modules/vextab/releases/vextab-div.js"></script>
+  <script type="text/javascript" src="js/ace.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
 </html>

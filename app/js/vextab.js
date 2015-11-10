@@ -1,4 +1,4 @@
-module.exports = function(input, output, error) {
+module.exports = function(input, output, error, editor) {
   var renderer = new Vex.Flow.Renderer(output, Vex.Flow.Renderer.Backends.CANVAS);
 
   return {
@@ -9,7 +9,7 @@ module.exports = function(input, output, error) {
       try {
         vextab.reset();
         artist.reset();
-        vextab.parse(input.innerText);
+        vextab.parse(editor.getValue());
         artist.render(renderer);
         error.innerText = '';
         $(error).hide();

@@ -39,10 +39,14 @@ var state = (function() {
   return that;
 }());
 
-var vextab = require('./js/vextab')(ui.input, ui.output, ui.error);
+var editor = ace.edit('input');
+editor.session.setOption('useWorker', false);
+editor.session.setMode('ace/mode/ini');
 
-ui.input.addEventListener('input', function() {
-  if (input.innerText !== state.originalData) {
+var vextab = require('./js/vextab')(ui.input, ui.output, ui.error, editor);
+
+editor.on('change', function() {
+  if (editor.getValue !== state.originalData) {
     state.markDirty();
   }
   vextab.render();
@@ -128,19 +132,19 @@ var trySaveNotPersisted = function(next) {
 };
 
 var autoHeight = function() {
-  var colLeft = $('#col-left');
-  var colRight = $('#col-right');
   var windowHeight = $(window).height();
-  var height;
+  var elements = $('.auto-height');
 
   if ($('body').is('.view-vert')) {
-    height = _.max([windowHeight, colLeft.height(), colRight.height(), 650]);
+    var heights = _.map(elements, function(e) { return $(e).height(); });
+    heights.push(windowHeight);
+    heights.push(650);
+    height = _.max(heights);
   } else {
     height = windowHeight / 2;
   }
 
-  colLeft.height(height);
-  colRight.height(height);
+  elements.height(height);
 };
 
 $(window).on('resize', function() {
