@@ -7,3 +7,4 @@
 * PDF export for canvas only.
 * Multiplatform / multiarch build.
 * Custom highlighting modus.
+* Refactor to use jQuery.

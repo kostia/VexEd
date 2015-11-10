@@ -6,14 +6,14 @@ var ipc = require('ipc');
 var BrowserWindow = require('browser-window');
 var Menu          = require('menu');
 
-var menuTemplate = require('./app/js/menu-template');
+var menuTemplate = require('./main/menu-template');
 
 var mainWindow = null;
 var warnBeforeClose = true;
 
 app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 900, height: 700});
-  mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
+  mainWindow.loadUrl('file://' + __dirname + '/../editor-renderer.html');
 
   var applicationMenu = Menu.buildFromTemplate(menuTemplate(mainWindow));
   Menu.setApplicationMenu(applicationMenu);

@@ -43,7 +43,7 @@ var editor = ace.edit('input');
 editor.session.setOption('useWorker', false);
 editor.session.setMode('ace/mode/ini');
 
-var vextab = require('./js/vextab')(ui.input, ui.output, ui.error, editor);
+var vextab = require('./js/editor-renderer/vextab')(ui.input, ui.output, ui.error, editor);
 
 editor.on('change', function() {
   if (editor.getValue !== state.originalData) {
