@@ -1,8 +1,8 @@
 {
   "name": "vexed",
-  "productName": "Vexed",
-  "version": "0.0.0",
-  "description": "My superior app",
+  "productName": "VexEd",
+  "version": "0.0.1",
+  "description": "VexEd - The VexTab Editor",
   "license": "MIT",
   "repository": "kostia/vexed",
   "author": {
@@ -18,15 +18,13 @@
   "scripts": {
     "test": "xo",
     "start": "DEVELOP=1 electron .",
-    "build": "electron-packager . VexEd --out=dist --arch=x64 --platform=darwin --ignore='^dist$' --ignore=screenshot.png --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion"
+    "build": "electron-packager . VexEd --out=dist --arch=x64 --platform=darwin --ignore='^dist$' --ignore=screenshot.png --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.1 --icon=icon.icns"
   },
-  "files": [
-    "index.js",
-    "index.html",
-    "index.css"
-  ],
   "keywords": [
-    "electron-app"
+    "electron-app",
+    "vextab",
+    "vexflow",
+    "editor"
   ],
   "dependencies": {
     "coffee-script": "^1.10.0",
