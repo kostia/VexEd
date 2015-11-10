@@ -133,7 +133,7 @@ var autoHeight = function() {
   var windowHeight = $(window).height();
   var height;
 
-  if ($('body').is('.split-vert')) {
+  if ($('body').is('.view-vert')) {
     height = _.max([windowHeight, colLeft.height(), colRight.height(), 650]);
   } else {
     height = windowHeight / 2;
@@ -149,23 +149,31 @@ $(window).on('resize', function() {
 });
 
 var toggleSplit = function() {
-  $('body').toggleClass('split-vert');
+  $('body').toggleClass('view-vert');
   autoHeight();
   vextab.render();
 };
 
-$('#split-toggle').on('click', function() {
-  toggleSplit();
-});
-
-ipc.on('split-horiz', function() {
-  if ($('body').is('.split-vert')) {
+$('.view-switch-vert').on('click', function() {
+  if ($('body').is(':not(.view-vert)')) {
     toggleSplit();
   }
 });
 
-ipc.on('split-vert', function() {
-  if ($('body').is(':not(.split-vert)')) {
+$('.view-switch-horiz').on('click', function() {
+  if ($('body').is('.view-vert')) {
+    toggleSplit();
+  }
+});
+
+ipc.on('view-switch-vert', function() {
+  if ($('body').is(':not(.view-vert)')) {
+    toggleSplit();
+  }
+});
+
+ipc.on('view-switch-horiz', function() {
+  if ($('body').is('.view-vert')) {
     toggleSplit();
   }
 });

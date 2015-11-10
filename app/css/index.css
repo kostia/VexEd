@@ -31,10 +31,36 @@ body {
   font-size: 20px;
 }
 
-#header #split-toggle .icon {
+.view-switch-vert .icon {
   float: right;
   cursor: pointer;
-  background: transparent url('../img/split-horiz.png') no-repeat 8px 8px;
+  background: transparent url('../img/split-vert.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+  height: 31px;
+  width: 32px;
+  margin: -5px -10px;
+  padding: 2px;
+}
+
+.view-vert .view-switch-vert .icon {
+  background: #EAEAEA url('../img/split-vert.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+.view-switch-vert .icon:hover {
+  background: #F7F7F7 url('../img/split-vert.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+.view-vert .view-switch-vert .icon:hover {
+  background: #EAEAEA url('../img/split-vert.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+.view-switch-horiz .icon {
+  float: right;
+  cursor: pointer;
+  background: #EAEAEA url('../img/split-horiz.png') no-repeat 8px 8px;
   background-size: 20px 20px;
   height: 31px;
   width: 32px;
@@ -42,23 +68,14 @@ body {
   padding: 2px;
 }
 
-#header #split-toggle .icon:hover {
-  background: #F5F5F5 url('../img/split-horiz.png') no-repeat 8px 8px;
+.view-vert .view-switch-horiz .icon {
+  background: transparent url('../img/split-horiz.png') no-repeat 8px 8px;
   background-size: 20px 20px;
 }
 
-.split-vert #header #split-toggle .icon {
-  background: transparent url('../img/split-vert.png') no-repeat 8px 8px;
+.view-vert .view-switch-horiz .icon:hover {
+  background: #F7F7F7 url('../img/split-horiz.png') no-repeat 8px 8px;
   background-size: 20px 20px;
-}
-
-.split-vert #header #split-toggle .icon:hover {
-  background: #F5F5F5 url('../img/split-vert.png') no-repeat 8px 8px;
-  background-size: 20px 20px;
-}
-
-#split-toggle:hover {
-  background: #ddd;
 }
 
 #container {
@@ -67,7 +84,7 @@ body {
   width: 100%;
 }
 
-.split-vert #container {
+.view-vert #container {
   padding: 20px 0 0 0;
 }
 
@@ -82,7 +99,7 @@ body {
   border-bottom: 1px solid #DDD;
 }
 
-.split-vert #col-left {
+.view-vert #col-left {
   float: left;
   width: 48%;
   border-right: 1px solid #DDD;
@@ -95,7 +112,7 @@ body {
   overflow: auto;
 }
 
-.split-vert #col-right {
+.view-vert #col-right {
   float: right;
   width: 48%;
 }
@@ -106,7 +123,7 @@ body {
   margin-top: 44px;
 }
 
-.split-vert #input {
+.view-vert #input {
   margin-top: 30px;
 }
 

@@ -116,14 +116,14 @@ module.exports = function(mainWindow) {
       label: 'Split vertically',
       accelerator: 'CmdOrCtrl+1',
       click: function() {
-        mainWindow.webContents.send('split-vert');
+        mainWindow.webContents.send('view-switch-vert');
       }
     },
     {
       label: 'Split horizontally',
       accelerator: 'CmdOrCtrl+2',
       click: function() {
-        mainWindow.webContents.send('split-horiz');
+        mainWindow.webContents.send('view-switch-horiz');
       }
     }
   ]};
