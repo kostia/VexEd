@@ -130,14 +130,26 @@ var trySaveNotPersisted = function(next) {
 var autoHeight = function() {
   var colLeft = $('#col-left');
   var colRight = $('#col-right');
+  var windowHeight = $(window).height();
+  var height;
 
-  var height = _.max([$(window).height(), colLeft.height(), colRight.height(), 650]);
+  if ($('body').is('.split-vert')) {
+    height = _.max([windowHeight, colLeft.height(), colRight.height(), 650]);
+  } else {
+    height = windowHeight / 2;
+  }
 
   colLeft.height(height);
   colRight.height(height);
 };
 
 $(window).on('resize', function() {
+  autoHeight();
+  vextab.render();
+});
+
+$('#split-toggle').on('click', function() {
+  $('body').toggleClass('split-vert');
   autoHeight();
   vextab.render();
 });

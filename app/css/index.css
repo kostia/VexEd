@@ -13,51 +13,101 @@ body {
   padding: 0;
 }
 
-#logo {
+#header {
   background: #FFF;
   border-bottom: 1px solid #CCC;
   color: #626262;
-  font-family: LobsterRegular;
-  font-size: 20px;
   height: 25px;
   left: 0;
   margin: 0;
   padding: 5px 10px;
   position: fixed;
   width: 100%;
+  font-family: SourceSansPro;
+}
+
+#header .logo {
+  font-family: LobsterRegular;
+  font-size: 20px;
+}
+
+#header #split-toggle .icon {
+  float: right;
+  cursor: pointer;
+  background: transparent url('../img/split-vert.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+  height: 31px;
+  width: 32px;
+  margin: -5px 10px;
+  padding: 2px;
+}
+
+#header #split-toggle .icon:hover {
+  background: #F5F5F5 url('../img/split-vert.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+.split-vert #header #split-toggle .icon {
+  background: transparent url('../img/split-horiz.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+.split-vert #header #split-toggle .icon:hover {
+  background: #F5F5F5 url('../img/split-horiz.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+#split-toggle:hover {
+  background: #ddd;
 }
 
 #container {
-  padding: 20px 0 0 0;
+  padding: 6px 0 0 0;
   margin: 0;
   width: 100%;
 }
 
+.split-vert #container {
+  padding: 20px 0 0 0;
+}
+
 #col-left {
   background: #F5F5F5;
-  border-right: 1px solid #DDD;
   color: #626262;
-  float: left;
   font-family: SourceSansPro;
   font-size: 14px;
   margin: 0;
-  overflow: auto;
   padding: 0 0 0 15px;
+  overflow: auto;
+  border-bottom: 1px solid #DDD;
+}
+
+.split-vert #col-left {
+  float: left;
   width: 48%;
+  border-right: 1px solid #DDD;
+  border-bottom: none;
 }
 
 #col-right {
-  float: right;
   margin: 0;
-  overflow: auto;
   padding: 0;
+  overflow: auto;
+}
+
+.split-vert #col-right {
+  float: right;
   width: 48%;
 }
 
 #input {
   font-size: 14px;
-  margin-top: 30px;
   width: 100%;
+  margin-top: 44px;
+}
+
+.split-vert #input {
+  margin-top: 30px;
 }
 
 #input:focus {
