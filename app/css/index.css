@@ -34,7 +34,7 @@ body {
 #header #split-toggle .icon {
   float: right;
   cursor: pointer;
-  background: transparent url('../img/split-vert.png') no-repeat 8px 8px;
+  background: transparent url('../img/split-horiz.png') no-repeat 8px 8px;
   background-size: 20px 20px;
   height: 31px;
   width: 32px;
@@ -43,17 +43,17 @@ body {
 }
 
 #header #split-toggle .icon:hover {
-  background: #F5F5F5 url('../img/split-vert.png') no-repeat 8px 8px;
+  background: #F5F5F5 url('../img/split-horiz.png') no-repeat 8px 8px;
   background-size: 20px 20px;
 }
 
 .split-vert #header #split-toggle .icon {
-  background: transparent url('../img/split-horiz.png') no-repeat 8px 8px;
+  background: transparent url('../img/split-vert.png') no-repeat 8px 8px;
   background-size: 20px 20px;
 }
 
 .split-vert #header #split-toggle .icon:hover {
-  background: #F5F5F5 url('../img/split-horiz.png') no-repeat 8px 8px;
+  background: #F5F5F5 url('../img/split-vert.png') no-repeat 8px 8px;
   background-size: 20px 20px;
 }
 

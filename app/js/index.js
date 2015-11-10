@@ -148,10 +148,26 @@ $(window).on('resize', function() {
   vextab.render();
 });
 
-$('#split-toggle').on('click', function() {
+var toggleSplit = function() {
   $('body').toggleClass('split-vert');
   autoHeight();
   vextab.render();
+};
+
+$('#split-toggle').on('click', function() {
+  toggleSplit();
+});
+
+ipc.on('split-horiz', function() {
+  if ($('body').is('.split-vert')) {
+    toggleSplit();
+  }
+});
+
+ipc.on('split-vert', function() {
+  if ($('body').is(':not(.split-vert)')) {
+    toggleSplit();
+  }
 });
 
 autoHeight();

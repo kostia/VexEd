@@ -111,6 +111,23 @@ module.exports = function(mainWindow) {
     },
   ]};
 
+  var viewMenu = {label: 'View', submenu: [
+    {
+      label: 'Split vertically',
+      accelerator: 'CmdOrCtrl+1',
+      click: function() {
+        mainWindow.webContents.send('split-vert');
+      }
+    },
+    {
+      label: 'Split horizontally',
+      accelerator: 'CmdOrCtrl+2',
+      click: function() {
+        mainWindow.webContents.send('split-horiz');
+      }
+    }
+  ]};
+
   var windowMenu = {label: 'Window', role: 'window', submenu: [
     {
       label: 'Minimize',
@@ -141,6 +158,7 @@ module.exports = function(mainWindow) {
     vexEdMenu,
     fileMenu,
     editMenu,
+    viewMenu,
     windowMenu
   ];
 
