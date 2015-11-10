@@ -1,4 +1,5 @@
-var fs = require('fs');
+var fs    = require('fs');
+var shell = require('shell');
 
 var Dialog = require('dialog');
 
@@ -141,6 +142,17 @@ module.exports = function(mainWindow) {
     }
   ]};
 
+  var helpMenu = {label: 'Help', submenu: [
+    {
+      label: 'VexTab Reference',
+      click: function() { shell.openExternal('http://www.vexflow.com/vextab'); }
+    },
+    {
+      label: 'VexEd Support',
+      click: function() { shell.openExternal('https://github.com/kostia/VexEd'); }
+    }
+  ]};
+
   var developMenu = {label: 'Develop', submenu: [
     {
       label: 'Reload',
@@ -159,7 +171,8 @@ module.exports = function(mainWindow) {
     fileMenu,
     editMenu,
     viewMenu,
-    windowMenu
+    windowMenu,
+    helpMenu
   ];
 
   if (process.env.DEVELOP) { menuTemplate.push(developMenu); }
