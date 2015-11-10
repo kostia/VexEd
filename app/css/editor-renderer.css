@@ -109,13 +109,14 @@ body {
 
 #col-right {
   margin: 0;
-  padding: 10px 0 0 0;
   overflow: auto;
+  padding: 10px 0 0 10px;
 }
 
 .view-vert #col-right {
   float: right;
   width: 48%;
+  padding: 10px 0 0 0;
 }
 
 #input {

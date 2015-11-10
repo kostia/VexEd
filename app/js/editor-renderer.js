@@ -1,6 +1,7 @@
 var _      = require('lodash');
 var fs     = require('fs');
 var ipc    = require('ipc');
+var path   = require('path');
 var remote = require('remote');
 
 var Dialog = remote.require('dialog');
@@ -77,6 +78,20 @@ ipc.on('file-save', function() {
 
 ipc.on('file-save-as', function() {
   saveUnknownFile();
+});
+
+ipc.on('file-save-as-pdf', function() {
+  var pdf = new jsPDF('s', 'mm');
+  pdf.addImage(ui.output.toDataURL('image/png'), 'PNG', 10, 10);
+
+  var filename;
+  if (state.filename) {
+    filename = path.basename(state.filename, '.vex') + '.pdf';
+  } else {
+    filename = 'Notation.pdf';
+  }
+
+  pdf.save(filename);
 });
 
 ipc.on('window-close', function() {

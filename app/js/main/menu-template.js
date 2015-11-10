@@ -53,8 +53,13 @@ module.exports = function(mainWindow) {
       click: function() { mainWindow.webContents.send('file-save-as'); }
     },
     {
-      label: 'Export PDF',
+      label: 'Export Notation As PDF',
       accelerator: 'CmdOrCtrl+E',
+      click: function() { mainWindow.webContents.send('file-save-as-pdf'); }
+    },
+    {
+      label: 'Export All As PDF',
+      accelerator: 'CmdOrCtrl+Shift+E',
       click: function() {
         mainWindow.webContents.printToPDF({}, function(err, data) {
           if (err) {
