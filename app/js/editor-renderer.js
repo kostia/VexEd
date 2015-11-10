@@ -165,12 +165,14 @@ var autoHeight = function() {
 $(window).on('resize', function() {
   autoHeight();
   vextab.render();
+  editor.resize();
 });
 
 var toggleSplit = function() {
   $('body').toggleClass('view-vert');
   autoHeight();
   vextab.render();
+  editor.resize();
 };
 
 $('.view-switch-vert').on('click', function() {
