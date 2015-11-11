@@ -1,7 +1,7 @@
 {
   "name": "vexed",
   "productName": "VexEd",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "VexEd - The VexTab Editor",
   "license": "MIT",
   "repository": {
@@ -21,7 +21,7 @@
   "scripts": {
     "test": "xo",
     "start": "DEVELOP=1 electron .",
-    "build": "electron-packager . VexEd --out=dist --arch=all --platform=all --ignore=dist --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.1 --icon=icon.icns",
+    "build": "electron-packager . VexEd --out=dist --arch=all --platform=all --ignore=dist --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.2 --icon=icon.icns",
     "release": "electron-release --app=dist/VexEd-darwin-x64/VexEd.app --token=$GITHUB_RELEASE_TOKEN"
   },
   "keywords": [
