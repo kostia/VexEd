@@ -82,7 +82,7 @@ ipc.on('file-save-as', function() {
 
 ipc.on('file-save-as-pdf', function() {
   var pdf = new jsPDF('s', 'mm');
-  pdf.addImage(ui.output.toDataURL('image/png'), 'PNG', 10, 10);
+  pdf.addImage(ui.output.get(0).toDataURL('image/png'), 'PNG', 10, 10);
 
   var filename;
   if (state.filename) {
