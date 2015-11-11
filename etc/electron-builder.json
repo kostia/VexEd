@@ -1,0 +1,17 @@
+{
+  "osx": {
+    "title": "VexEd",
+    "background": "installer.png",
+    "icon": "../icon.icns",
+    "icon-size": 80,
+    "contents": [
+      {"x": 320, "y": 250, "type": "link", "path": "/Applications"},
+      {"x": 70, "y": 250, "type": "file"}
+    ]
+  },
+
+  "win": {
+    "title": "VexEd",
+    "icon": "icon.ico"
+  }
+}

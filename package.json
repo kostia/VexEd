@@ -21,10 +21,16 @@
   "scripts": {
     "test": "xo",
     "start": "DEVELOP=1 electron .",
-    "build": "npm run build-darwin && npm run build-linux && npm run build-win32",
-    "build-darwin": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=darwin --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version --icon=icon.icns",
-    "build-linux": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=linux --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version",
-    "build-win32": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=win32 --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version --icon=icon.ico"
+    "build": "npm run build:darwin && npm run build:linux && npm run build:win32",
+    "package": "npm run package:darwin && npm run package:win32:ia32 && npm run package:win32:x64",
+
+    "build:darwin": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=darwin --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version --icon=icon.icns",
+    "build:linux": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=linux --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version",
+    "build:win32": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=win32 --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version --icon=icon.ico",
+
+    "package:darwin": "rm -f dist/VexEd-darwin-x64/VexEd.dmg && electron-builder dist/VexEd-darwin-x64/VexEd.app --platform=osx --out=dist/VexEd-darwin-x64 --config=etc/electron-builder.json",
+    "package:win32:ia32": "rm -f 'dist/VexEd-win32-ia32/VexEd Setup.exe' && electron-builder dist/VexEd-win32-ia32 --platform=win --out=dist/VexEd-win32-ia32 --config=etc/electron-builder.json",
+    "package:win32:x64": "rm -f 'dist/VexEd-win32-x64/VexEd Setup.exe' && electron-builder dist/VexEd-win32-x64 --platform=win --out=dist/VexEd-win32-x64 --config=etc/electron-builder.json"
   },
   "keywords": [
     "electron-app",
