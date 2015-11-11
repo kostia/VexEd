@@ -1,0 +1,2 @@
+  "release:win32:ia32": "cp 'dist/VexEd-win32-ia32/VexEd Setup.exe' dist/VexEd-win32-ia32/VexEd-Setup-ia32.exe && electron-release --app=dist/VexEd-win32-ia32/VexEd-Setup-ia32.exe --token=$GITHUB_RELEASE_TOKEN",
+  "release:win32:x64": "cp 'dist/VexEd-win32-x64/VexEd Setup.exe' dist/VexEd-win32-x64/VexEd-Setup-x64.exe && electron-release --app=dist/VexEd-win32-x64/VexEd-Setup-x64.exe --token=$GITHUB_RELEASE_TOKEN"
