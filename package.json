@@ -21,8 +21,10 @@
   "scripts": {
     "test": "xo",
     "start": "DEVELOP=1 electron .",
-    "build": "electron-packager . VexEd --out=dist --arch=all --platform=all --ignore=dist --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.2 --icon=icon.icns",
-    "release": "electron-release --app=dist/VexEd-darwin-x64/VexEd.app --token=$GITHUB_RELEASE_TOKEN"
+    "build": "npm run build-darwin && npm run build-linux && npm run build-win32",
+    "build-darwin": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=darwin --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version --icon=icon.icns",
+    "build-linux": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=linux --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version",
+    "build-win32": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --platform=win32 --arch=all --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=$npm_package_version --icon=icon.ico"
   },
   "keywords": [
     "electron-app",
