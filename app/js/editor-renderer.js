@@ -7,9 +7,9 @@ var remote = require('remote');
 var Dialog = remote.require('dialog');
 
 var ui = {
-  input: document.getElementById('input'),
-  output: document.getElementById('output'),
-  error: document.getElementById('error')
+  input: $('#input'),
+  output: $('#output'),
+  error: $('#error')
 };
 
 var state = (function() {
@@ -162,17 +162,19 @@ var autoHeight = function() {
   elements.height(height);
 };
 
-$(window).on('resize', function() {
+var render = function() {
   autoHeight();
   vextab.render();
   editor.resize();
+};
+
+$(window).on('resize', function() {
+  render();
 });
 
 var toggleSplit = function() {
   $('body').toggleClass('view-vert');
-  autoHeight();
-  vextab.render();
-  editor.resize();
+  render();
 };
 
 $('.view-switch-vert').on('click', function() {

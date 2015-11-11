@@ -1,9 +1,9 @@
 module.exports = function(input, output, error, editor) {
-  var renderer = new Vex.Flow.Renderer(output, Vex.Flow.Renderer.Backends.CANVAS);
+  var renderer = new Vex.Flow.Renderer(output.get(0), Vex.Flow.Renderer.Backends.CANVAS);
 
   return {
     render: function() {
-      var artist = new Artist(10, 10, $(input).width() - 30);
+      var artist = new Artist(10, 10, input.width() - 30);
       var vextab = new VexTab(artist);
 
       try {
@@ -11,12 +11,12 @@ module.exports = function(input, output, error, editor) {
         artist.reset();
         vextab.parse(editor.getValue());
         artist.render(renderer);
-        error.innerText = '';
-        $(error).hide();
+        error.text('');
+        error.hide();
       } catch (e) {
         console.log(e);
-        error.innerText = 'Error: ' + e.message.replace(/[\n]/g, '<br/>');
-        $(error).show();
+        error.text(`Error: ${e.message.replace(/[\n]/g, '<br/>')}`);
+        error.show();
       }
     }
   };
