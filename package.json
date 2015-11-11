@@ -4,7 +4,10 @@
   "version": "0.0.1",
   "description": "VexEd - The VexTab Editor",
   "license": "MIT",
-  "repository": "kostia/vexed",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kostia/VexEd.git"
+  },
   "author": {
     "name": "Kostiantyn Kahanskyi",
     "email": "kostiantyn.kahanskyi@googlemail.com",
@@ -18,7 +21,8 @@
   "scripts": {
     "test": "xo",
     "start": "DEVELOP=1 electron .",
-    "build": "electron-packager . VexEd --out=dist --arch=all --platform=all --ignore=dist --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.1 --icon=icon.icns"
+    "build": "electron-packager . VexEd --out=dist --arch=all --platform=all --ignore=dist --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.1 --icon=icon.icns",
+    "release": "electron-release --app=dist/VexEd-darwin-x64/VexEd.app --token=1316f49fb23df422c53f10e81e03191bc7e0d1b9"
   },
   "keywords": [
     "electron-app",
@@ -34,6 +38,7 @@
   "devDependencies": {
     "electron-packager": "^5.0.0",
     "electron-prebuilt": "^0.34.1",
+    "electron-release": "^2.1.2",
     "xo": "^0.10.0"
   },
   "xo": {
