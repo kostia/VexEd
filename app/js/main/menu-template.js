@@ -56,27 +56,6 @@ module.exports = function(mainWindow) {
       label: 'Export Notation As PDF',
       accelerator: 'CmdOrCtrl+E',
       click: function() { mainWindow.webContents.send('file-save-as-pdf'); }
-    },
-    {
-      label: 'Export All As PDF',
-      accelerator: 'CmdOrCtrl+Shift+E',
-      click: function() {
-        mainWindow.webContents.printToPDF({}, function(err, data) {
-          if (err) {
-            Dialog.showErrorBox('Error exporting PDF', err);
-          }
-
-          Dialog.showSaveDialog(null, {}, function(filename) {
-            if (filename) {
-              fs.writeFile(filename, data, function(err) {
-                if (err) {
-                  Dialog.showErrorBox('Error saving PDF', err);
-                }
-              });
-            }
-          });
-        });
-      }
     }
   ]};
 
