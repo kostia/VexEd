@@ -4,6 +4,12 @@
 
 Editor for the [VexTab](http://www.vexflow.com/vextab) notation.
 
+## Install
+
+* OSX: download the disk image from https://github.com/kostia/VexEd/releases/latest, mount it and run the app.
+* Windows: download the installer from https://github.com/kostia/VexEd/releases/latest and run it.
+* Linux: download the source and run from command line.
+
 ## Develop
 
 ```
