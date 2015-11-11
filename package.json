@@ -22,7 +22,7 @@
     "test": "xo",
     "start": "DEVELOP=1 electron .",
     "build": "electron-packager . VexEd --out=dist --arch=all --platform=all --ignore=dist --ignore=etc --ignore=npm-debug.log --overwrite --version=$npm_package_electronVersion --app-version=0.0.1 --icon=icon.icns",
-    "release": "electron-release --app=dist/VexEd-darwin-x64/VexEd.app --token=1316f49fb23df422c53f10e81e03191bc7e0d1b9"
+    "release": "electron-release --app=dist/VexEd-darwin-x64/VexEd.app --token=$GITHUB_RELEASE_TOKEN"
   },
   "keywords": [
     "electron-app",
