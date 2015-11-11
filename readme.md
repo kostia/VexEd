@@ -1,6 +1,6 @@
 # VexEd - The VexTab Editor (Alpha)
 
-<img src="https://raw.github.com/kostia/VexEd/master/screenshot.png" width="600px">
+<img src="https://raw.github.com/kostia/VexEd/master/etc/screenshot.png" width="600px">
 
 Editor for the [VexTab](http://www.vexflow.com/vextab) notation.
 
