@@ -3,6 +3,7 @@ var fs     = require('fs');
 var ipc    = require('ipc');
 var path   = require('path');
 var remote = require('remote');
+var shell  = require('shell');
 
 var Dialog = remote.require('dialog');
 
@@ -91,7 +92,19 @@ ipc.on('file-save-as-pdf', function() {
     filename = 'Notation.pdf';
   }
 
-  pdf.save(filename);
+  filename = `${process.env.HOME || process.env.USERPROFILE}/${filename}`
+
+  Dialog.showSaveDialog(null, {defaultPath: filename}, function(filename) {
+    if (filename) {
+      var data = pdf.output();
+      fs.writeFile(filename, data, 'binary', function(err) {
+        if (err) {
+          return Dialog.showErrorBox(`Error saving ${filename}`, err);
+        }
+        shell.showItemInFolder(filename);
+      });
+    }
+  });
 });
 
 ipc.on('window-close', function() {
