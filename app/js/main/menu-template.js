@@ -126,7 +126,7 @@ module.exports = function(mainWindow) {
     }
   ]};
 
-  var helpMenu = {label: 'Help', submenu: [
+  var helpMenu = {label: 'Help', role: 'help', submenu: [
     {
       label: 'VexTab Reference',
       click: function() { shell.openExternal('http://www.vexflow.com/vextab'); }
