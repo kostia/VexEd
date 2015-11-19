@@ -1,5 +1,7 @@
 # VexEd - The VexTab Editor (Alpha)
 
+## Attention: I'm currently experimenting with auto-updater, so be aware that the latest version 0.0.5 is broken. Please use version. 0.0.4.
+
 <img src="https://raw.github.com/kostia/VexEd/master/etc/screenshot.png" width="600px">
 
 Editor for the [VexTab](http://www.vexflow.com/vextab) notation.
