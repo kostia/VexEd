@@ -36,3 +36,7 @@ ipc.on('app-quit', function() {
   warnBeforeClose = false;
   app.quit();
 });
+
+ipc.on('app-get-version', function(event) {
+  event.returnValue = app.getVersion();
+});

@@ -1,15 +1,33 @@
 var fs    = require('fs');
 var shell = require('shell');
 
-var Dialog = require('dialog');
+var BrowserWindow = require('browser-window');
+var Dialog        = require('dialog');
+
+var aboutWindow;
 
 module.exports = function(mainWindow) {
-  var vexEdMenu = {label: 'VexEd', submenu: [
-    {
+  var vexEdMenu = {label: 'VexEd', submenu: []};
+
+  if (process.platform === 'darwin') {
+    vexEdMenu.submenu.push({
       label: 'About VexEd',
       role: 'about'
-    },
+    });
+  } else {
+    vexEdMenu.submenu.push({
+      label: 'About VexEd',
+      click: function() {
+        if (!aboutWindow) {
+          aboutWindow = new BrowserWindow({width: 250, height: 100, resizable: true});
+          aboutWindow.loadUrl('file://' + __dirname + '/../../about-renderer.html');
+          aboutWindow.on('close', function() { aboutWindow = null; });
+        }
+      }
+    });
+  }
 
+  vexEdMenu.submenu = vexEdMenu.submenu.concat([
     {type: 'separator'},
 
     {
@@ -34,7 +52,7 @@ module.exports = function(mainWindow) {
       accelerator: 'CmdOrCtrl+Q',
       selector: 'terminate:'
     }
-  ]};
+  ]);
 
   var fileMenu = {label: 'File', submenu: [
     {
