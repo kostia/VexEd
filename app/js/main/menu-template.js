@@ -3,11 +3,42 @@ var shell = require('shell');
 
 var Dialog = require('dialog');
 
-module.exports = function(mainWindow) {
+module.exports = function(mainWindow, app) {
   var vexEdMenu = {label: 'VexEd', submenu: [
     {
       label: 'About VexEd',
       role: 'about'
+    },
+
+    {
+      label: 'Check For Update...',
+      click: function() {
+        var gh_releases = require('electron-gh-releases');
+
+        var options = {
+          repo: 'kostia/VexEd',
+          currentVersion: 'v0.0.2'//app.getVersion()
+        };
+
+        var update = new gh_releases(options, function (auto_updater) {
+          console.log('checking...');
+          // Auto updater event listener
+          auto_updater.on('update-downloaded', function (e, rNotes, rName, rDate, uUrl, quitAndUpdate) {
+            // Install the update
+            quitAndUpdate();
+          });
+        });
+
+        // Check for updates
+        update.check(function (err, status) {
+          console.log(err);
+          console.log(status);
+
+          if (!err && status) {
+            update.download();
+          }
+        });
+      }
     },
 
     {type: 'separator'},

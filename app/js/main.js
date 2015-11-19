@@ -15,7 +15,7 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1200, height: 700});
   mainWindow.loadUrl('file://' + __dirname + '/../editor-renderer.html');
 
-  var applicationMenu = Menu.buildFromTemplate(menuTemplate(mainWindow));
+  var applicationMenu = Menu.buildFromTemplate(menuTemplate(mainWindow, app));
   Menu.setApplicationMenu(applicationMenu);
 
   if (process.env.TOOLS) {
