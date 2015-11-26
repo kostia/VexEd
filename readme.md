@@ -1,4 +1,4 @@
-# VexEd - The VexTab Editor (Alpha)
+# VexEd - The VexTab Editor (Beta)
 
 <img src="https://raw.github.com/kostia/VexEd/master/etc/screenshot.png" width="600px">
 
