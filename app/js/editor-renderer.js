@@ -82,6 +82,16 @@ ipc.on('file-save-as', function() {
 });
 
 ipc.on('file-save-as-pdf', function() {
+  saveAsPdf();
+});
+
+ipc.on('window-close', function() {
+  trySaveNotPersisted(function() {
+    ipc.send('app-quit');
+  });
+});
+
+var saveAsPdf = function() {
   var pdf = new jsPDF('s', 'mm');
   pdf.addImage(ui.output.get(0).toDataURL('image/png'), 'PNG', 10, 10);
 
@@ -105,13 +115,7 @@ ipc.on('file-save-as-pdf', function() {
       });
     }
   });
-});
-
-ipc.on('window-close', function() {
-  trySaveNotPersisted(function() {
-    ipc.send('app-quit');
-  });
-});
+};
 
 var saveFile = function(next) {
   if (state.filename) {
@@ -189,6 +193,10 @@ var toggleSplit = function() {
   $('body').toggleClass('view-vert');
   render();
 };
+
+$('.file-save-as-pdf').on('click', function() {
+  saveAsPdf();
+});
 
 $('.view-switch-vert').on('click', function() {
   if ($('body').is(':not(.view-vert)')) {
