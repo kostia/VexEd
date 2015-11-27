@@ -118,17 +118,31 @@ module.exports = function(app) {
 
   var viewMenu = {label: 'View', submenu: [
     {
-      label: 'Split vertically',
+      label: 'Split Vertically',
       accelerator: 'CmdOrCtrl+1',
       click: function() {
         app.mainWindow.webContents.send('view-switch-vert');
       }
     },
     {
-      label: 'Split horizontally',
+      label: 'Split Horizontally',
       accelerator: 'CmdOrCtrl+2',
       click: function() {
         app.mainWindow.webContents.send('view-switch-horiz');
+      }
+    },
+    {
+      label: 'Show Editor Fullscreen',
+      accelerator: 'CmdOrCtrl+3',
+      click: function() {
+        app.mainWindow.webContents.send('view-full-input');
+      }
+    },
+    {
+      label: 'Show Notation Fullscreen',
+      accelerator: 'CmdOrCtrl+4',
+      click: function() {
+        app.mainWindow.webContents.send('view-full-output');
       }
     }
   ]};
