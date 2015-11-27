@@ -148,7 +148,7 @@ module.exports = function(mainWindow) {
     {
       label: 'VexTab Cheatsheet',
       accelerator: 'CmdOrCtrl+I',
-      click: function() { shell.openExternal('http://my.vexflow.com/articles/134'); }
+      click: function() { mainWindow.webContents.send('help-show-cheatsheet'); }
     },
     {
       label: 'About VexTab',

@@ -91,6 +91,10 @@ ipc.on('window-close', function() {
   });
 });
 
+ipc.on('help-show-cheatsheet', function() {
+  shell.openExternal('http://my.vexflow.com/articles/134');
+});
+
 var saveAsPdf = function() {
   var pdf = new jsPDF('s', 'mm');
   pdf.addImage(ui.output.get(0).toDataURL('image/png'), 'PNG', 10, 10);
