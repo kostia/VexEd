@@ -88,10 +88,27 @@ body {
   width: 32px;
   margin: -5px 10px;
   padding: 2px;
+  margin-right: 40px;
 }
 
 .file-save-as-pdf .icon:hover {
   background: #F7F7F7 url('../img/save-as-pdf.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+}
+
+.help-show-cheatsheet .icon {
+  float: right;
+  cursor: pointer;
+  background: url('../img/show-cheatsheet.png') no-repeat 8px 8px;
+  background-size: 20px 20px;
+  height: 31px;
+  width: 32px;
+  margin: -5px 10px;
+  padding: 2px;
+}
+
+.help-show-cheatsheet .icon:hover {
+  background: #F7F7F7 url('../img/show-cheatsheet.png') no-repeat 8px 8px;
   background-size: 20px 20px;
 }
 

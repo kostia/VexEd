@@ -92,8 +92,12 @@ ipc.on('window-close', function() {
 });
 
 ipc.on('help-show-cheatsheet', function() {
-  shell.openExternal('http://my.vexflow.com/articles/134');
+  showCheatsheet();
 });
+
+var showCheatsheet = function() {
+  shell.openExternal('http://my.vexflow.com/articles/134');
+};
 
 var saveAsPdf = function() {
   var pdf = new jsPDF('s', 'mm');
@@ -197,6 +201,10 @@ var toggleSplit = function() {
   $('body').toggleClass('view-vert');
   render();
 };
+
+$('.help-show-cheatsheet').on('click', function() {
+  showCheatsheet();
+});
 
 $('.file-save-as-pdf').on('click', function() {
   saveAsPdf();
