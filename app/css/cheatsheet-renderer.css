@@ -1,0 +1,27 @@
+@font-face {
+  font-family: SourceSansPro;
+  src: url(../fonts/SourceSansPro-Regular.ttf);
+}
+
+@font-face {
+  font-family: LobsterRegular;
+  src: url(../fonts/Lobster-Regular.ttf);
+}
+
+body {
+  font-family: SourceSansPro;
+  font-size: 14px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+code {
+  background: #F7F7F7;
+  color: #626262;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #DDD;
+}

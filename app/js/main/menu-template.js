@@ -4,9 +4,11 @@ var shell = require('shell');
 var BrowserWindow = require('browser-window');
 var Dialog        = require('dialog');
 
+var showCheatsheet = require('./show-cheatsheet');
+
 var aboutWindow;
 
-module.exports = function(mainWindow) {
+module.exports = function(app) {
   var vexEdMenu = {label: 'VexEd', submenu: []};
 
   if (process.platform === 'darwin') {
@@ -58,22 +60,22 @@ module.exports = function(mainWindow) {
     {
       label: 'Open...',
       accelerator: 'CmdOrCtrl+O',
-      click: function() { mainWindow.webContents.send('file-open'); }
+      click: function() { app.mainWindow.webContents.send('file-open'); }
     },
     {
       label: 'Save',
       accelerator: 'CmdOrCtrl+S',
-      click: function() { mainWindow.webContents.send('file-save'); }
+      click: function() { app.mainWindow.webContents.send('file-save'); }
     },
     {
       label: 'Save As...',
       accelerator: 'CmdOrCtrl+Shift+S',
-      click: function() { mainWindow.webContents.send('file-save-as'); }
+      click: function() { app.mainWindow.webContents.send('file-save-as'); }
     },
     {
       label: 'Export Notation As PDF',
       accelerator: 'CmdOrCtrl+E',
-      click: function() { mainWindow.webContents.send('file-save-as-pdf'); }
+      click: function() { app.mainWindow.webContents.send('file-save-as-pdf'); }
     }
   ]};
 
@@ -119,14 +121,14 @@ module.exports = function(mainWindow) {
       label: 'Split vertically',
       accelerator: 'CmdOrCtrl+1',
       click: function() {
-        mainWindow.webContents.send('view-switch-vert');
+        app.mainWindow.webContents.send('view-switch-vert');
       }
     },
     {
       label: 'Split horizontally',
       accelerator: 'CmdOrCtrl+2',
       click: function() {
-        mainWindow.webContents.send('view-switch-horiz');
+        app.mainWindow.webContents.send('view-switch-horiz');
       }
     }
   ]};
@@ -148,7 +150,7 @@ module.exports = function(mainWindow) {
     {
       label: 'VexTab Cheatsheet',
       accelerator: 'CmdOrCtrl+I',
-      click: function() { mainWindow.webContents.send('help-show-cheatsheet'); }
+      click: function() { showCheatsheet(app); }
     },
     {
       label: 'About VexTab',
@@ -164,12 +166,12 @@ module.exports = function(mainWindow) {
     {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
-      click: function() { mainWindow.reload(); }
+      click: function() { app.mainWindow.reload(); }
     },
     {
       label: 'Toggle DevTools',
       accelerator: 'Alt+CmdOrCtrl+I',
-      click: function() { mainWindow.toggleDevTools(); }
+      click: function() { app.mainWindow.toggleDevTools(); }
     }
   ]};
 

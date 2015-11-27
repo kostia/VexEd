@@ -7,6 +7,7 @@ var BrowserWindow = require('browser-window');
 var Menu          = require('menu');
 
 var menuTemplate = require('./main/menu-template');
+var showCheatsheet = require('./main/show-cheatsheet');
 
 var mainWindow = null;
 var warnBeforeClose = true;
@@ -15,7 +16,9 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1200, height: 700});
   mainWindow.loadUrl('file://' + __dirname + '/../editor-renderer.html');
 
-  var applicationMenu = Menu.buildFromTemplate(menuTemplate(mainWindow));
+  app.mainWindow = mainWindow;
+
+  var applicationMenu = Menu.buildFromTemplate(menuTemplate(app));
   Menu.setApplicationMenu(applicationMenu);
 
   if (process.env.TOOLS) {
@@ -40,3 +43,8 @@ ipc.on('app-quit', function() {
 ipc.on('app-get-version', function(event) {
   event.returnValue = app.getVersion();
 });
+
+ipc.on('help-show-cheatsheet', function() {
+  showCheatsheet(app);
+});
+

@@ -91,14 +91,6 @@ ipc.on('window-close', function() {
   });
 });
 
-ipc.on('help-show-cheatsheet', function() {
-  showCheatsheet();
-});
-
-var showCheatsheet = function() {
-  shell.openExternal('http://my.vexflow.com/articles/134');
-};
-
 var saveAsPdf = function() {
   var pdf = new jsPDF('s', 'mm');
   pdf.addImage(ui.output.get(0).toDataURL('image/png'), 'PNG', 10, 10);
@@ -203,7 +195,7 @@ var toggleSplit = function() {
 };
 
 $('.help-show-cheatsheet').on('click', function() {
-  showCheatsheet();
+  ipc.send('help-show-cheatsheet');
 });
 
 $('.file-save-as-pdf').on('click', function() {

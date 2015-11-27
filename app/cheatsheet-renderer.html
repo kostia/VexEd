@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VexEd - VexTab Cheatsheet</title>
+    <link rel="stylesheet" href="css/cheatsheet-renderer.css">
+  </head>
+
+  <body>
+    <h3>The Stave</h3>
+
+    <p>Show the score and/or tab staves:</p>
+
+    <pre><code>tabstave
+    tabstave notation=true|false
+    tabstave tablature=true|false
+    </code></pre>
+
+    <p>Set the clef, key, time signature, and guitar tuning:</p>
+
+    <pre><code>tabstave clef=bass|treble|alto|percussion|tenor
+    tabstave key=A|B|C#...
+    tabstave time=C|4/4|3/4|6/8,...
+    tabstave tuning=standard|dropd|eb|E/5,B/4,G/4,D/4,A/3,E/3
+    </code></pre>
+
+    <h3>Single Notes</h3>
+
+    <p>Fret/String syntax:</p>
+
+    <pre><code>notes 4/5
+    notes 4-5-6-7/6 (Multiple notes on the same string)
+    notes X/5 (Muted)
+    </code></pre>
+
+    <p>Note/Octave syntax:</p>
+
+    <pre><code>notes C/4
+    notes C-D-E-F/4 (Multiple notes in the same octave)
+    notes X/4 (Muted)
+    </code></pre>
+
+    <h3>Chords</h3>
+
+    <pre><code>notes (4/5.4/4.4/3)
+    notes (C/4.E/4.G/4)
+    </code></pre>
+
+    <h3>Multiple Voices on a Stave</h3>
+
+    <pre><code>options stave-distance=30 space=10
+    tabstave notation=true key=A time=4/4
+      voice
+        notes :q (5/2.5/3.7/4) :8 7p5h6/3 ^3^ 5h6h7/5 ^3^ :q 7V/4
+      voice
+        notes :h 5/6 :q  5/6 :8 3-5/6
+    </code></pre>
+
+    <h3>Barlines</h3>
+
+    <pre><code>notes C-D-E-F/4 | C-D-E-F/4            (Regular bar)
+    notes C-D-E-F/4 =|| C-D-E-F/4          (Double bar)
+    notes C-D-E-F/4 =|| C-D-E-F/4 =|=      (Add an end bar)
+    notes C-D-E-F/4 =|: C-D-E-F/4 =:|      (Repeats)
+    notes =|: C-D-E-F/4 =:: C-D-E-F/4 =:|  (Double Repeats)
+    </code></pre>
+
+    <h3>Time Durations</h3>
+
+    <pre><code>notes :w :h :q :8 :16 :32 :64
+    notes :hd :qd :8d :16d :32d :64d (Adding a d for dotted notes)
+    </code></pre>
+
+    <p>You can tie notes with <code>T</code></p>
+
+    <pre><code>notes :w A/4 | T A/4
+    </code></pre>
+
+    <h3>Rests</h3>
+
+    <pre><code>notes :w ## :q ##
+    notes :w #8# (Position rest on line 8)
+    </code></pre>
+
+    <h3>Triplets / Tuplets</h3>
+
+    <pre><code>notes C-D-E/4 ^3^
+    notes :8 C-D-E-F-G/4 ^5^
+    </code></pre>
+
+    <h3>Tab Articulations</h3>
+
+    <p><code>s</code>=Slide <code>h</code>=Hammer <code>p</code>=Pulloff <code>b</code>=Bend  <code>t</code>=Tap</p>
+
+    <p><code>v</code>=Vibrato <code>V</code>=Harsh Vibrato <code>u</code>=Upstroke <code>d</code>=Downstroke</p>
+
+    <pre><code>notes 4s6h7p6/5
+    notes 5b7b5v/3
+    notes (5/5.5/6)s(8/5.8/6)
+    </code></pre>
+
+    <h3>Strokes and Sweeps</h3>
+
+    <pre><code>notes (5/6.7/5.7/4.5/3.5/2.5/1) $.stroke/qu.$ (Rasquedo up)
+    notes (5/6.7/5.7/4.5/3.5/2.5/1) $.stroke/qd.$ (Rasquedo down)
+    notes (5/6.7/5.7/4.5/3.5/2.5/1) $.stroke/ru.$ (Sweep up)
+    notes (5/6.7/5.7/4.5/3.5/2.5/1) $.stroke/rd.$ (Sweep down)
+    notes (5/6.7/5.7/4.5/3.5/2.5/1) $.stroke/bu.$ (Brush up)
+    notes (5/6.7/5.7/4.5/3.5/2.5/1) $.stroke/bd.$ (Brush down)
+    </code></pre>
+
+    <h3>Text Annotations</h3>
+
+    <pre><code>notes 4/4 $Boo$
+    notes C-E-G/4 $C,E,G$
+    notes C-E-G/4 $.top.$ $C,E,G$
+    notes 4/4 $.Arial-10-Italic.Boo$
+
+    tabstave
+    notes :q C-E-G-C/4 | :w C/4
+    text :q,Root,Third,Fifth,Root,|,:w,Root         (Note the bar for alignment)
+    text :q,#tr,Third,#f                            (Symbols prefixed with #)
+    text :q,Root,Third,Fift,Root,|Blah,:w,Root      (Text above bar)
+    text ++,.10,This is a new line in position 10
+    text ++,.12,This is a new line in position 12
+    text ++,.-1,.font=Times-10-italic,Another line in italics
+    </code></pre>
+
+    <h3>Score Articulations</h3>
+
+    <p>Annotations are <code>$code/position$</code>.</p>
+
+    <p>The codes are:</p>
+
+    <p><code>a.</code>=Stacatto <code>av</code>=Staccatissimo <code>a&gt;</code>=Accent <code>a-</code>=Tenuto</p>
+
+    <p><code>a^</code>=Marcatto <code>a+</code>=Left Hand Pizzicato <code>ao</code>=Snap pizzicato</p>
+
+    <p><code>ah</code>=Open Note/Natural Harmonic <code>a@a</code>=Up Fermata <code>a@u</code>=Down Fermata</p>
+
+    <p><code>a|</code>=Bow Up <code>am</code>=Bow Down</p>
+
+    <p>The positions: <code>top</code> and <code>bottom</code></p>
+
+    <pre><code>notes 4/4 $.a./top$      (This is a stacatto on top)
+    notes 4/4 $.a-/bottom$   (This is a tenuto on the bottom)
+    </code></pre>
+
+    <h3>Slash Notation</h3>
+
+    <p>Simply suffix a duration with <code>S</code> to render all following notes as slashes.</p>
+
+    <pre><code>notes :2S B/4 :qS B/4 :q ## | :8S B/4 B/4 :qS B-B-B/4 ^3^
+    </code></pre>
+
+    <h3>Customizations</h3>
+
+    <p>Use <code>options key=value key=value</code> before a <code>tabstave</code>.</p>
+
+    <p>Available options:</p>
+
+    <p><code>width</code>    Set the width of the stave in pixels.</p>
+
+    <p><code>scale</code> The zoom level of the notation. Default is 1.0.</p>
+
+    <p><code>space</code> Adds space (given in pixels) before the next stave.</p>
+
+    <p><code>stave-distance</code>    Sets the distance (in pixels) between the note and tab staves.</p>
+
+    <p><code>font-face/font-style/font-size</code>    Set the default font for annotations.</p>
+
+    <p><code>player</code> If set to <code>true</code> enables audio playback.</p>
+
+    <p><code>tempo</code> Set the tempo for audio playback.</p>
+  </body>
+</html>
