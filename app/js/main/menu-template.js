@@ -146,11 +146,16 @@ module.exports = function(mainWindow) {
 
   var helpMenu = {label: 'Help', role: 'help', submenu: [
     {
-      label: 'VexTab Reference',
+      label: 'VexTab Cheatsheet',
+      accelerator: 'CmdOrCtrl+I',
+      click: function() { shell.openExternal('http://my.vexflow.com/articles/134'); }
+    },
+    {
+      label: 'About VexTab',
       click: function() { shell.openExternal('http://www.vexflow.com/vextab'); }
     },
     {
-      label: 'VexEd Support',
+      label: 'VexEd Website',
       click: function() { shell.openExternal('https://github.com/kostia/VexEd'); }
     }
   ]};
