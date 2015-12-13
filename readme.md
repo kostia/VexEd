@@ -1,4 +1,4 @@
-# VexEd - The VexTab Editor (Beta)
+# VexEd - The VexTab Editor
 
 <img src="https://raw.github.com/kostia/VexEd/master/etc/screenshot.png" width="600px">
 
@@ -6,8 +6,8 @@ Editor for the [VexTab](http://www.vexflow.com/vextab) notation.
 
 ## Install
 
-* OS X: download the disk image from https://github.com/kostia/VexEd/releases/latest, mount it and run the app.
-* Windows: download the installer from https://github.com/kostia/VexEd/releases/latest and run it.
+* OS X: grab the disk image from https://github.com/kostia/VexEd/releases/latest.
+* Windows: grab the installer from https://github.com/kostia/VexEd/releases/latest.
 * Linux: download the source and run from command line.
 
 ## Develop
@@ -27,9 +27,6 @@ npm start
 ```
 npm run build
 ```
-
-Builds the app for OS X, Linux, and Windows, using [electron-packager](https://github.com/maxogden/electron-packager).
-
 
 ## License
 
