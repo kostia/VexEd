@@ -1,7 +1,7 @@
 {
   "name": "vexed",
   "productName": "VexEd",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "VexEd - The VexTab Editor",
   "license": "MIT",
   "repository": {
