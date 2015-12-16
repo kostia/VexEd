@@ -35,14 +35,11 @@
   },
   "keywords": [
     "electron-app",
-    "vextab",
-    "vexflow",
     "editor"
   ],
   "dependencies": {
     "coffee-script": "^1.10.0",
-    "electron-debug": "^0.3.0",
-    "vextab": "^2.0.10"
+    "electron-debug": "^0.3.0"
   },
   "devDependencies": {
     "electron-packager": "^5.0.0",

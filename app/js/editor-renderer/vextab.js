@@ -1,5 +1,5 @@
 module.exports = function(input, output, error, editor) {
-  var renderer = new Vex.Flow.Renderer(output.get(0), Vex.Flow.Renderer.Backends.CANVAS);
+  var renderer = new Vex.Flow.Renderer(output.get(0), Vex.Flow.Renderer.Backends.SVG);
 
   return {
     render: function() {
