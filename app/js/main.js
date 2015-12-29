@@ -13,7 +13,15 @@ var mainWindow = null;
 var warnBeforeClose = true;
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 1200, height: 700});
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 700,
+    'min-width': 500,
+    'min-height': 200,
+    'accept-first-mouse': true,
+    'title-bar-style': 'hidden'
+  });
+
   mainWindow.loadUrl('file://' + __dirname + '/../editor-renderer.html');
 
   app.mainWindow = mainWindow;
