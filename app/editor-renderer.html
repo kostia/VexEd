@@ -3,21 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>VexEd - The VexTab Editor</title>
+    <link rel="stylesheet" href="css/vendor/photon.css">
     <link rel="stylesheet" href="css/editor-renderer.css">
   </head>
 
-  <body class="view-vert">
-    <div id="header">
-      <span class="logo">VexEd</span>
-      <span class="help-show-cheatsheet"><span class="icon"></span></span>
-      <span class="view-switch-horiz"><span class="icon"></span></span>
-      <span class="view-switch-vert"><span class="icon"></span></span>
-      <span class="file-save-as-pdf"><span class="icon"></span></span>
-    </div>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <h1 class="title">VexEd - The VexTab Editor</h1>
 
-    <div id="container">
-      <div id="col-left" class="auto-height">
-        <div id="input" class="auto-height" contenteditable="true">
+        <div class="toolbar-actions">
+          <button class="btn btn-default file-save-as-pdf">
+            <span class="icon icon-export"></span>
+          </button>
+
+          <div class="btn-group">
+            <button class="btn btn-default">
+              <span class="icon icon-pause view-switch-vert"></span>
+            </button>
+            <button class="btn btn-default">
+              <span class="icon icon-pause view-switch-horiz"></span>
+            </button>
+          </div>
+
+          <button class="btn btn-default help-show-cheatsheet">
+            <span class="icon icon-lamp"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="window-content">
+        <div class="pane-group">
+          <div id="col-left" class="pane">
+            <div id="input" class="auto-height" contenteditable="true">
 options space=20
 
 tabstave
@@ -42,15 +60,19 @@ tabstave
   text :h, ,.font=Times-12-italic, D.S. al coda, |#coda
   text :h, ,.-1, .font=Arial-14-bold,A13
   text ++, .23, #f
+            </div>
+          </div>
+
+          <div id="col-right" class="pane">
+            <canvas id="output"></canvas>
+          </div>
         </div>
       </div>
 
-      <div id="col-right" class="auto-height">
-        <canvas id="output"></canvas>
-      </div>
+      <footer class="toolbar toolbar-footer">
+        <h1 class="title" id="error"></h1>
+      </footer>
     </div>
-
-    <div id="error"></div>
   </body>
 
   <script type="text/javascript" src="../node_modules/vextab/releases/vextab-div.js"></script>

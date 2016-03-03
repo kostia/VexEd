@@ -167,7 +167,7 @@ var autoHeight = function() {
   var windowHeight = $(window).height();
   var elements = $('.auto-height');
 
-  if ($('body').is('.view-vert')) {
+  if ($('body').is(':not(.view-horiz)')) {
     var heights = _.map(elements, function(e) { return $(e).height(); });
     heights.push(windowHeight);
     heights.push(650);
@@ -190,7 +190,7 @@ $(window).on('resize', function() {
 });
 
 var toggleSplit = function() {
-  $('body').toggleClass('view-vert');
+  $('body').toggleClass('view-horiz');
   render();
 };
 
@@ -202,26 +202,26 @@ $('.file-save-as-pdf').on('click', function() {
   saveAsPdf();
 });
 
-$('.view-switch-vert').on('click', function() {
-  if ($('body').is(':not(.view-vert)')) {
-    toggleSplit();
-  }
-});
-
 $('.view-switch-horiz').on('click', function() {
-  if ($('body').is('.view-vert')) {
+  if ($('body').is(':not(.view-horiz)')) {
     toggleSplit();
   }
 });
 
-ipc.on('view-switch-vert', function() {
-  if ($('body').is(':not(.view-vert)')) {
+$('.view-switch-vert').on('click', function() {
+  if ($('body').is('.view-horiz')) {
     toggleSplit();
   }
 });
 
 ipc.on('view-switch-horiz', function() {
-  if ($('body').is('.view-vert')) {
+  if ($('body').is(':not(.view-horiz)')) {
+    toggleSplit();
+  }
+});
+
+ipc.on('view-switch-vert', function() {
+  if ($('body').is('.view-horiz')) {
     toggleSplit();
   }
 });
